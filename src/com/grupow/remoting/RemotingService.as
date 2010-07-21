@@ -1,4 +1,15 @@
-﻿package com.grupow.remoting
+﻿
+/**
+ * 
+ * GrupoW RemotingService
+ * Copyright (c) 2009 GrupoW
+ *  
+ * Released under MIT license:
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ **/
+ 
+package com.grupow.remoting
 {
 	import com.dannypatterson.remoting.ServiceProxyEvent;
 	import com.dannypatterson.remoting.FaultEvent;
