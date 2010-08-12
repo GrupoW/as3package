@@ -11,7 +11,7 @@
 
 package com.grupow.display 
 {
-	import flash.display.Sprite;
+	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.FocusEvent;
 	import flash.text.TextField;
@@ -22,7 +22,7 @@ package com.grupow.display
 	 * ...
 	 * @author Raúl Uranga
 	 */
-	public class InputField extends Sprite
+	public class InputField extends MovieClip
 	{
 		public static var INPUT_TIME_OUT:uint = 1000;
 
@@ -30,6 +30,7 @@ package com.grupow.display
 		public static const FOCUS_IN:String = "focus_in_event";
 		public static const FOCUS_OUT:String = "focus_out_event";
 		public static const CHANGE:String = "change_event";
+		public static const RESET:String = "reset_event";
 
 		
 		public var showBorderAtError:Boolean = false;
@@ -53,7 +54,7 @@ package com.grupow.display
 
 		public function InputField() 
 		{
-			_field = this.getChildAt(0) as TextField;
+			build_field();
 			
 			_field.addEventListener(FocusEvent.FOCUS_IN, onFocusIn);
 			_field.addEventListener(FocusEvent.FOCUS_OUT, onFocusOut);
@@ -64,44 +65,45 @@ package com.grupow.display
 			ini_str = _field.text;
 		}
 
-		private function onFieldChange(e:Event):void 
+		protected function build_field():void 
+		{
+			_field = this.getChildAt(0) as TextField;
+		}
+
+		protected function onFieldChange(e:Event):void 
 		{
 			clearTimeout(_inputTimer);
 		
 			if (getText() != defaultText && getText().length > 0) {
-				if (isEmail && !isValid) {
-					return;
-				}
 				_inputTimer = setTimeout(dispatchEvent, InputField.INPUT_TIME_OUT, new Event(InputField.INPUT_COMPLETE));
 			}
 			
 			this.dispatchEvent(new Event(InputField.CHANGE));
 		}
 
-		private function onRemoved_handler(e:Event):void 
+		protected function onRemoved_handler(e:Event):void 
 		{
 			removeEventListener(Event.REMOVED_FROM_STAGE, onRemoved_handler);
 			
 			_field.removeEventListener(FocusEvent.FOCUS_IN, onFocusIn);
 			_field.removeEventListener(FocusEvent.FOCUS_OUT, onFocusOut);
-			_field.removeEventListener(Event.CHANGE, onFocusIn);
+			_field.removeEventListener(Event.CHANGE, onFieldChange);
 		}
 
-		private function onFocusOut(e:FocusEvent):void 
+		protected function onFocusOut(e:FocusEvent):void 
 		{
 			if (!this.getText().length) {
 				
 				clearTimeout(_inputTimer);
-				setText(this.ini_str);
-				this._field.displayAsPassword = false;
+				reset();
 			}
 			
 			this.dispatchEvent(new Event(InputField.FOCUS_OUT));
 		}
 
-		private function onFocusIn(e:FocusEvent):void 
+		protected function onFocusIn(e:FocusEvent):void 
 		{
-			this._field.border = false;
+			hideBorder();
 			
 			if(this.getText() == this.ini_str) {
 				this.clear();
@@ -112,6 +114,17 @@ package com.grupow.display
 			}
 			
 			this.dispatchEvent(new Event(InputField.FOCUS_IN));
+		}
+		
+		protected function hideBorder():void
+		{
+			this._field.border = false;
+		}
+		
+		protected function showBorder():void
+		{
+			this._field.border = true;
+			this._field.borderColor = 0xff0000;
 		}
 
 		public function clear():void
@@ -182,24 +195,28 @@ package com.grupow.display
 			return true;
 		}
 
-		public function validate():void
+		public function validate():Boolean
 		{
-			//var _borderColor = this._field.borderColor;
-
 			if (!this.isValid) {
 				
 				if(showBorderAtError) {
-					this._field.border = true;
-					this._field.borderColor = 0xff0000;
+					showBorder();
 				}
-				//this.setText(this.ini_str);
-				throw new Error(errorMessage);
+				
+				return false;
+				//throw new Error(errorMessage);
+			} else {
+				hideBorder();
 			}
+			
+			return true;
 		}
-
+		
 		public function reset():void
 		{
 			this.setText(this.ini_str);
+			this._field.displayAsPassword = false;
+			this.dispatchEvent(new Event(InputField.RESET));
 		}
 
 		public function get isPassword():Boolean 
