@@ -60,9 +60,7 @@ package com.grupow.display
 		{
 			this.buttonMode = true;
 			this.mouseChildren = false;
-			this.addEventListener(MouseEvent.CLICK, click_handler, false, 0, true);
-			this.addEventListener(MouseEvent.ROLL_OVER, rollOver_handler, false, 0, true);
-			this.addEventListener(MouseEvent.ROLL_OUT, rollOut_handler, false, 0, true);
+			addListeners();
 		}
 
 		public function getEnabled():Boolean 
@@ -76,13 +74,11 @@ package com.grupow.display
 			
 			if (_enabled) {
 				
-				this.addEventListener(MouseEvent.CLICK, click_handler, false, 0, true);
-				this.addEventListener(MouseEvent.ROLL_OVER, rollOver_handler, false, 0, true);
-				this.addEventListener(MouseEvent.ROLL_OUT, rollOut_handler, false, 0, true);
+				addListeners();
 				
 			} else {
 				
-				removeAllListeners();
+				removeListeners();
 			}
 			
 			this.mouseEnabled = _enabled;
@@ -104,16 +100,23 @@ package com.grupow.display
 			gotoAndPlay("out");
 		}
 
-		protected function removeAllListeners():void
+		protected function removeListeners():void
 		{
 			this.removeEventListener(MouseEvent.CLICK, click_handler, false);
 			this.removeEventListener(MouseEvent.ROLL_OVER, rollOver_handler, false);
 			this.removeEventListener(MouseEvent.ROLL_OUT, rollOut_handler, false);
 		}
+		
+		protected function addListeners():void
+		{
+			this.addEventListener(MouseEvent.CLICK, click_handler, false, 0, true);
+			this.addEventListener(MouseEvent.ROLL_OVER, rollOver_handler, false, 0, true);
+			this.addEventListener(MouseEvent.ROLL_OUT, rollOut_handler, false, 0, true);
+		}
 
 		protected function dispose():void 
 		{
-			removeAllListeners();
+			removeListeners();
 			
 			this.removeEventListener(Event.ADDED_TO_STAGE, addedToStage_handler);
 			this.removeEventListener(Event.REMOVED_FROM_STAGE, removedToStage_handler);
