@@ -72,8 +72,8 @@ package com.grupow.display
 			
 			if(_currentViewObj != null) {
 				
-				_currentViewObj.view.close();
 				_currentViewObj.view.addEventListener(ViewEvent.CLOSED, openNextView_handler);
+				_currentViewObj.view.close();
 				_nextViewObj = viewObj;
 				
 			} else {
@@ -95,7 +95,7 @@ package com.grupow.display
 			
 			var viewObj:ViewData = _viewsDic[name] as ViewData;
 			viewObj.view.close();
-			//TODO check if is current view closed.....
+			//TODO check if current view is closed.....
 			_currentViewObj = null;
 		}
 
@@ -111,7 +111,7 @@ package com.grupow.display
 			return viewObj.view;
 		}
 
-		public function setViewAsOpened(name:String):void 
+		public function setCurrentView(name:String):void 
 		{
 			if (_viewsDic[name] == null) {
 				trace("Error: The string identifier [" + name + "] of the view to open is not added");
