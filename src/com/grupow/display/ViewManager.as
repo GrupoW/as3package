@@ -89,7 +89,7 @@ package com.grupow.display
 		{
 			if (_viewsDic[name] == null) {
 				//silently fail
-				trace("Error: The string identifier [" + name + "] of the view to open is not added");
+				trace("Error: The string identifier [" + name + "] of the view to close is not added");
 				return;
 			}
 			
@@ -103,7 +103,7 @@ package com.grupow.display
 		{
 			if (_viewsDic[name] == null) {
 				//silently fail
-				trace("Error: The string identifier [" + name + "] view is not added");
+				trace("Error: The string identifier [" + name + "] is not added");
 				return null;
 			}
 			
@@ -114,7 +114,7 @@ package com.grupow.display
 		public function setCurrentView(name:String):void 
 		{
 			if (_viewsDic[name] == null) {
-				trace("Error: The string identifier [" + name + "] of the view to open is not added");
+				trace("Error: The string identifier [" + name + "] is not added");
 				return;
 			}
 			
