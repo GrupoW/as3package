@@ -36,7 +36,7 @@ package com.grupow.utils
 			var original_length:Number = data.length;
 			for (var i:Number = 0;i < original_length;i++) {
 				var random_number:int = Math.floor(Math.random() * (data.length));
-				return_array[i] = data.splice(random_number, 1);
+				return_array[i] = data.splice(random_number, 1)[0];
 			}
 			return return_array;
 		}
