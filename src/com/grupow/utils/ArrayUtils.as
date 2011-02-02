@@ -41,7 +41,7 @@ package com.grupow.utils
 			return return_array;
 		}
 
-		static public function  remove(data:Array,ref:*):Array
+		static public function remove(data:Array,ref:*):Array
 		{
 			for(var i:Number = 0;i < data.length;i++) {
 				if(data[i] == ref) {
@@ -64,7 +64,7 @@ package com.grupow.utils
 			return checktmp - 1;
 		}
 
-		static public function  checkExistence(arra:Array,value:*):Boolean 
+		static public function checkExistence(arra:Array,value:*):Boolean 
 		{
 			var checktmp:Number = 0;
 			for (var i:Number = 0;i <= arra.length;i++) {
@@ -80,7 +80,7 @@ package com.grupow.utils
 			}
 		};
 
-		static public function  removeDuplicates(arra:Array):Array 
+		static public function removeDuplicates(arra:Array):Array 
 		{
 			var i:Number;
 			var j:Number; 
@@ -98,5 +98,10 @@ package com.grupow.utils
 			}
 			return temp;
 		};
+		
+		static public function getRandomElement(value:Array):* 
+		{
+			return value[Math.floor(Math.random() * value.length)];
+		}
 	}
 }
