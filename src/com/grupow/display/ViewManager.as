@@ -72,9 +72,9 @@ package com.grupow.display
 			
 			if(_currentViewObj != null) {
 				
+				_nextViewObj = viewObj;
 				_currentViewObj.view.addEventListener(ViewEvent.CLOSED, openNextView_handler);
 				_currentViewObj.view.close();
-				_nextViewObj = viewObj;
 				
 			} else {
 				
