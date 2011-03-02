@@ -22,7 +22,7 @@ package com.grupow.commands
 		private var tracker:ITrackable;
 		private var _args:Array;
 		
-		public function TrackerTrackCommand(tracker:iTrackable,...rest) 
+		public function TrackerTrackCommand(tracker:ITrackable,...rest) 
 		{
 			this.tracker = tracker;
 			_args = rest;
