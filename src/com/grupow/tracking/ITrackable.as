@@ -12,7 +12,7 @@
 package com.grupow.tracking {
 	
 	/**
-	* @author Raúl Uranga
+	* @author RaÃºl Uranga
 	* @version 0.1
 	*/
 	
