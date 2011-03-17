@@ -17,9 +17,9 @@ package com.grupow.commands
 	 * ...
 	 * @author Raúl Uranga
 	 */
-	public class OpenViewCommand implemets ICommand
+	public class OpenViewCommand implements ICommand
 	{
-		private var view:IView
+		private var view:IView;
 		public function OpenViewCommand(view:IView) 
 		{
 			this.view = view;
