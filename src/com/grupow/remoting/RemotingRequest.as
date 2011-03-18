@@ -1,7 +1,7 @@
 
 /**
  * 
- * GrupoW RemotingRequest
+ * RemotingRequest by GrupoW
  * GrupoW
  *  
  * Released under MIT license:

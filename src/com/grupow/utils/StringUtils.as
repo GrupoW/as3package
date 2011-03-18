@@ -1,7 +1,7 @@
 ﻿
 /**
  * 
- * GrupoW StringUtils
+ * StringUtils by GrupoW
  * GrupoW
  *  
  * Released under MIT license:

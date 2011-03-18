@@ -1,7 +1,7 @@
 ﻿
 /**
  * 
- * GrupoW RemotingService
+ * RemotingService by GrupoW
  * GrupoW
  *  
  * Released under MIT license:

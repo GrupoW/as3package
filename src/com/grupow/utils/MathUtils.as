@@ -1,7 +1,7 @@
 ﻿
 /**
  * 
- * GrupoW MathUtils
+ * MathUtils by GrupoW
  * GrupoW
  *  
  * Released under MIT license:

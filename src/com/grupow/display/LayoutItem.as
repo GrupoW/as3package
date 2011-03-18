@@ -1,7 +1,7 @@
 ﻿
 /**
  * 
- * GrupoW LayoutItem
+ * LayoutItem by GrupoW
  * Copyright (c) 2003-2010 GrupoW
  * 
  * Released under MIT license:

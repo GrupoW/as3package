@@ -1,7 +1,7 @@
 ﻿
 /**
  * 
- * GrupoW TextFieldUtils
+ * TextFieldUtils by GrupoW
  * GrupoW
  *  
  * Released under MIT license:

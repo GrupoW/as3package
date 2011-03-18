@@ -1,3 +1,14 @@
+
+/**
+ * 
+ * IStateMachine by GrupoW
+ * Copyright (c) 2003-2010 GrupoW
+ * 
+ * Released under MIT license:
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ **/
+
 package com.grupow.core 
 {
 	import flash.events.IEventDispatcher;

@@ -1,7 +1,7 @@
 ﻿
 /**
  * 
- * GrupoW TransitionEvent
+ * TransitionEvent by GrupoW
  * Copyright (c) 2011 ruranga@grupow.com
  * 
  * Released under MIT license:

@@ -1,7 +1,7 @@
 
 /**
  * 
- * GrupoW ArrayUtils
+ * ArrayUtils by GrupoW
  * GrupoW
  *  
  * Released under MIT license:

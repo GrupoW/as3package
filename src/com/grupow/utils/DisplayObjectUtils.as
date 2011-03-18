@@ -1,7 +1,7 @@
 ﻿
 /**
  * 
- * GrupoW DisplayObjectUtils
+ * DisplayObjectUtils by GrupoW
  * GrupoW
  *  
  * Released under MIT license:

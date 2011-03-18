@@ -1,7 +1,7 @@
 
 /**
  * 
- * GrupoW IRemotingService
+ * IRemotingService by GrupoW
  * GrupoW
  *  
  * Released under MIT license:

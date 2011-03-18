@@ -1,7 +1,7 @@
 
 /**
  * 
- * GrupoW ColorUtils
+ * ColorUtils by GrupoW
  * GrupoW
  *  
  * Released under MIT license:

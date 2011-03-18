@@ -1,7 +1,7 @@
 
 /**
  * 
- * GrupoW IRemotingRequest
+ * IRemotingRequest by GrupoW
  * GrupoW
  *  
  * Released under MIT license:

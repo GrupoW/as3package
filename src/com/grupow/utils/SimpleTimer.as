@@ -1,7 +1,7 @@
 
 /**
  * 
- * GrupoW SimpleTimer
+ * SimpleTimer by GrupoW
  * GrupoW
  *  
  * Released under MIT license:

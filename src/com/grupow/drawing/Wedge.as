@@ -1,7 +1,7 @@
 
 /**
  * 
- * GrupoW Wedge
+ * Wedge by GrupoW
  * Copyright (c) 2003-2010 GrupoW
  * 
  * Released under MIT license:
@@ -9,33 +9,33 @@
  * 
  **/
 
-package com.grupow.drawing  {
-	
+package com.grupow.drawing  
+{
 	import flash.display.MovieClip;
 
 	/**
-	* @usage 
-	*
-	* 	import com.grupow.drawing.Wedge;
-	* 
-	*	function enterframe_handler (e:Event) {
-	*		
-	*		this.holder.graphics.clear();
-	*		this.holder.graphics.beginFill(0xffffff, 1);
-	*		Wedge.draw(this.holder, 12.5, 12.5, 0, (1 - value) * 360, 12.5);
-	*		this.holder.graphics.endFill();
-	*		value+=0.01
-	*			
-	*	}
+	 * @usage 
+	 *
+	 * 	import com.grupow.drawing.Wedge;
+	 * 
+	 *	function enterframe_handler (e:Event) {
+	 *		
+	 *		this.holder.graphics.clear();
+	 *		this.holder.graphics.beginFill(0xffffff, 1);
+	 *		Wedge.draw(this.holder, 12.5, 12.5, 0, (1 - value) * 360, 12.5);
+	 *		this.holder.graphics.endFill();
+	 *		value+=0.01
+	 *			
+	 *	}
 
-	*	var holder:MovieClip = new MovieClip();
-	*	addChild(holder);
-	*
-	*	var value:Number = 0;
-	*
-	*	this.addEventListener(Event.ENTER_FRAME,enterframe_handler)
-	*/
-	
+	 *	var holder:MovieClip = new MovieClip();
+	 *	addChild(holder);
+	 *
+	 *	var value:Number = 0;
+	 *
+	 *	this.addEventListener(Event.ENTER_FRAME,enterframe_handler)
+	 */
+
 	public class Wedge
 	{
 		public static function draw(target:MovieClip, x:Number, y:Number, startAngle:Number, arc:Number, radius:Number):void
@@ -55,32 +55,30 @@ package com.grupow.drawing  {
 			
 			target.graphics.moveTo(x, y);
 			
-			if (Math.abs(arc)>360) {
+			if (Math.abs(arc) > 360) {
 				arc = 360;
 			}
 			
-			segs = Math.ceil(Math.abs(arc)/45);
-			segAngle = arc/segs;
-			theta = -(segAngle/180)*Math.PI;
-			angle = -(startAngle/180)*Math.PI;
+			segs = Math.ceil(Math.abs(arc) / 45);
+			segAngle = arc / segs;
+			theta = -(segAngle / 180) * Math.PI;
+			angle = -(startAngle / 180) * Math.PI;
 			
-			if (segs>0) {
-				ax = x+Math.cos(startAngle/180*Math.PI)*radius;
-				ay = y+Math.sin(-startAngle/180*Math.PI)*radius;
+			if (segs > 0) {
+				ax = x + Math.cos(startAngle / 180 * Math.PI) * radius;
+				ay = y + Math.sin(-startAngle / 180 * Math.PI) * radius;
 				target.graphics.lineTo(ax, ay);
-				for (var i = 0; i<segs; i++) {
+				for (var i:int = 0;i < segs;i++) {
 					angle += theta;
-					angleMid = angle-(theta/2);
-					bx = x+Math.cos(angle)*radius;
-					by = y+Math.sin(angle)*radius;
-					cx = x+Math.cos(angleMid)*(radius/Math.cos(theta/2));
-					cy = y+Math.sin(angleMid)*(radius/Math.cos(theta/2));
+					angleMid = angle - (theta / 2);
+					bx = x + Math.cos(angle) * radius;
+					by = y + Math.sin(angle) * radius;
+					cx = x + Math.cos(angleMid) * (radius / Math.cos(theta / 2));
+					cy = y + Math.sin(angleMid) * (radius / Math.cos(theta / 2));
 					target.graphics.curveTo(cx, cy, bx, by);
 				}
 				target.graphics.lineTo(x, y);
 			}
 		};
-
 	}
-	
 }
