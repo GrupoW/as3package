@@ -1,7 +1,7 @@
 ﻿
 /**
  * 
- * Grupow ViewEvent
+ * GrupoW ViewEvent
  * Copyright (c) 2009 ruranga@grupow.com
  * 
  * Released under MIT license:

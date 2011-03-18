@@ -1,8 +1,8 @@
 
 /**
  * 
- * Grupow Wedge
- * Copyright (c) 2010 ruranga@grupow.com
+ * GrupoW Wedge
+ * Copyright (c) 2003-2010 GrupoW
  * 
  * Released under MIT license:
  * http://www.opensource.org/licenses/mit-license.php

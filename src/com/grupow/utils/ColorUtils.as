@@ -2,7 +2,7 @@
 /**
  * 
  * GrupoW ColorUtils
- * Copyright (c) 2009 GrupoW
+ * GrupoW
  *  
  * Released under MIT license:
  * http://www.opensource.org/licenses/mit-license.php
