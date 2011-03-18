@@ -13,6 +13,7 @@
 
 package com.grupow.controls 
 {
+	import flash.geom.Rectangle;
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.events.Event;
@@ -25,18 +26,25 @@ package com.grupow.controls
 	*/
 	public class WSlider extends WAbstractControl
 	{
-		private var bounds:Object;
+		private var bounds:Rectangle;
 		private var _currentX:Number;
 		private var _lastX:Number;
 		private var _isDragging:Boolean;
 		private var offset:Number;
-		private var oldx:Number;
+		private var xOld:Number;
 		private var _max:Number;
 		private var _min:Number;
+		
+		protected var track_btn:SimpleButton;
+		protected var track_mc:MovieClip;
+		protected var xPos:Number = 0;
 			
 		public function WSlider() 
 		{
 			super();
+			
+			track_btn = getChildByName("slider_btn") as SimpleButton;
+			track_mc = getChildByName("track") as MovieClip;
 		}
 		
 		public function get max():Number
@@ -61,25 +69,27 @@ package com.grupow.controls
 		
 		public function set position(value:Number):void 
 		{
-			slider_btn.x =  map(value, min, max, bounds.right, bounds.left);
+			xPos = track_btn.x =  map(value, min, max, bounds.right, bounds.left);
 		}
 		
 		public function get position():Number 
 		{ 
-			return map(slider_btn.x, bounds.right, bounds.left, min, max);
+			return map(xPos, bounds.right, bounds.left, min, max);
 		}
 		
 		protected override function init():void
 		{
-			bounds = { right:0, left:track.width - slider_btn.width };
+			bounds = new Rectangle();
+			bounds.right = 0;
+			bounds.left = track_mc.width - track_btn.width;
 			
-			_currentX = slider_btn.x;
-			_lastX = slider_btn.x;
+			_currentX = track_btn.x;
+			_lastX = track_btn.x;
 			_isDragging = false;
 			_min = 0;
 			_max = 1;		
 			
-			slider_btn.addEventListener(MouseEvent.MOUSE_DOWN, onDown_handler, false, 0, true);	
+			track_btn.addEventListener(MouseEvent.MOUSE_DOWN, onDown_handler, false, 0, true);	
 			
 			stage.addEventListener(Event.REMOVED_FROM_STAGE, removed_handler, false, 0, true);
 			
@@ -90,7 +100,7 @@ package com.grupow.controls
 			stage.removeEventListener(MouseEvent.MOUSE_UP, onUp_handler);
 			stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMove_handler);
 			
-			slider_btn.removeEventListener(MouseEvent.MOUSE_DOWN, onDown_handler);
+			track_btn.removeEventListener(MouseEvent.MOUSE_DOWN, onDown_handler);
 		}
 		
 		private function normalize(value:Number, minimum:Number, maximum:Number):Number 
@@ -111,7 +121,7 @@ package com.grupow.controls
 		private function onDown_handler(e:MouseEvent):void
 		{
 			_isDragging = true;
-			offset = slider_btn.mouseX;
+			offset = track_btn.mouseX;
 			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMove_handler);
 			stage.addEventListener(MouseEvent.MOUSE_UP, onUp_handler, false, 0, true);
 			this.dispatchEvent(new WScrollTrackEvent(WScrollTrackEvent.BEGIN_SCRUB, position));
@@ -128,16 +138,18 @@ package com.grupow.controls
 
 		private function onMove_handler(e:MouseEvent):void
 		{
-			oldx = slider_btn.x;
-			slider_btn.x = mouseX - offset;
+			xOld = xPos;
+			xPos = mouseX - offset;
 			
-			if (slider_btn.x <= bounds.right)
-				slider_btn.x = bounds.right;
-			else if (slider_btn.x >= bounds.left)
-				slider_btn.x = bounds.left;
+			if (xPos <= bounds.right)
+				xPos = bounds.right;
+			else if (xPos >= bounds.left)
+				xPos = bounds.left;
 			
-			if (oldx != slider_btn.x) 
+			if (xOld != xPos) 
 				this.dispatchEvent(new WScrollTrackEvent(WScrollTrackEvent.CHANGE, position));
+				
+			track_btn.x = xPos;
 							
 			e.updateAfterEvent();
 		}

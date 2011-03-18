@@ -35,7 +35,7 @@ package com.grupow.controls
 
 		protected var track_btn:SimpleButton;
 		protected var track_mc:MovieClip;
-		private var yPos:Number = 0;
+		protected var yPos:Number = 0;
 
 		public function WScrollTrack() 
 		{
@@ -66,12 +66,12 @@ package com.grupow.controls
 
 		public function set position(value:Number):void 
 		{
-			track_btn.y = map(value, min, max, bounds.top, bounds.bottom);
+			yPos = track_btn.y = map(value, min, max, bounds.top, bounds.bottom);
 		}
 
 		public function get position():Number 
 		{ 
-			return map(track_btn.y, bounds.top, bounds.bottom, min, max);
+			return map(yPos, bounds.top, bounds.bottom, min, max);
 		}
 
 		
