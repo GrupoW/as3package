@@ -114,7 +114,7 @@ package com.grupow.controls
 			offset = slider_btn.mouseX;
 			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMove_handler);
 			stage.addEventListener(MouseEvent.MOUSE_UP, onUp_handler, false, 0, true);
-			this.dispatchEvent(new WScrollTrackEvent(WScrollTrackEvent.BEGIN_SCRUB, false, false, position));
+			this.dispatchEvent(new WScrollTrackEvent(WScrollTrackEvent.BEGIN_SCRUB, position));
 		}
 
 		private function onUp_handler(e:MouseEvent):void
@@ -122,7 +122,7 @@ package com.grupow.controls
 			_isDragging = false;
 			stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMove_handler, false);
 			stage.removeEventListener(MouseEvent.MOUSE_UP, onUp_handler);
-			this.dispatchEvent(new WScrollTrackEvent(WScrollTrackEvent.END_SCRUB, false, false, position));
+			this.dispatchEvent(new WScrollTrackEvent(WScrollTrackEvent.END_SCRUB, position));
 			
 		}
 
@@ -137,7 +137,7 @@ package com.grupow.controls
 				slider_btn.x = bounds.left;
 			
 			if (oldx != slider_btn.x) 
-				this.dispatchEvent(new WScrollTrackEvent(WScrollTrackEvent.CHANGE,false,false,position));
+				this.dispatchEvent(new WScrollTrackEvent(WScrollTrackEvent.CHANGE, position));
 							
 			e.updateAfterEvent();
 		}
