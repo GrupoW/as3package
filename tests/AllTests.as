@@ -6,6 +6,7 @@ package {
   		public function AllTests() {
    	 		super();
    	 		addTest(new StringUtilsTest());
-   	 	}
+			addTest(new TrackingFactoryTest());
+  	 	}
   	}
 }
