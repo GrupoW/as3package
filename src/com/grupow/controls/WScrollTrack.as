@@ -1,8 +1,8 @@
 ﻿
 /**
  * 
- * Grupow WScrollTrack 
- * Copybottom (c) 2009 ruranga@grupow.com
+ * WScrollTrack by GrupoW 
+ * Copyright (c) 2003-2010 GrupoW
  * 
  * this file is part of com.grupow.controls package
  * 

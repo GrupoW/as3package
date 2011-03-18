@@ -1,4 +1,17 @@
-﻿package com.grupow.controls 
+﻿
+/**
+ * 
+ * WAbstractControl by GrupoW 
+ * Copyright (c) 2003-2010 GrupoW
+ * 
+ * this file is part of com.grupow.controls package
+ * 
+ * Released under MIT license:
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ **/
+
+package com.grupow.controls 
 {
 	import flash.display.MovieClip;
 	import flash.events.Event;
