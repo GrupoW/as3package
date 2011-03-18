@@ -14,29 +14,32 @@
 
 package com.grupow.controls 
 {
+	import com.greensock.TweenLite;
+	import com.greensock.easing.Cubic;
+
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+
 	import com.grupow.controls.WScrollTrackEvent;
-	import gs.TweenLite;
-	import gs.easing.Cubic;
+
 	/**
-	* ...
-	* @author Raúl Uranga
-	*/
+	 * ...
+	 * @author Raúl Uranga
+	 */
 	public class WScrollPane extends WAbstractControl
 	{
 		public var easefunc:Function = Cubic.easeOut;
 		public var easeduration:Number = 0.4;
 		private var _content:DisplayObject;
-		
+
 		public function WScrollPane() 
 		{
 			super();
 		}
-		
+
 		public function set content(target:DisplayObject):void 
 		{
 			
@@ -49,29 +52,28 @@ package com.grupow.controls
 			if (mask_mc.height - holder_mc.height > 0) {
 				scrollTrack_mc.visible = false;
 			}
-			
 		}
-		
+
 		public function get content():DisplayObject
 		{
 			return _content;
 		}
-		
+
 		protected override function init():void 
 		{
 			scrollTrack_mc.min = 0;
 			scrollTrack_mc.max = 1;
 			scrollTrack_mc.addEventListener(WScrollTrackEvent.CHANGE, change_handler, false, 0, true);	
 		}
-		
+
 		protected override function destroy():void 
 		{
 			scrollTrack_mc.removeEventListener(WScrollTrackEvent.CHANGE, change_handler);
 		}
-		
+
 		protected function change_handler(e:WScrollTrackEvent):void 
 		{
-			TweenLite.to(holder_mc, easeduration, { y: (mask_mc.height - holder_mc.height) * e.position, ease:easefunc } );
+			TweenLite.to(holder_mc, easeduration, { y: (mask_mc.height - holder_mc.height) * e.position, ease:easefunc });
 			
 			//TODO bubbles event 
 			//dispatchEvent (e);
@@ -122,7 +124,5 @@ package com.grupow.controls
 			
 		}
 		//*/
-	
 	}
-	
 }
