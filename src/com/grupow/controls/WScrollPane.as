@@ -1,8 +1,8 @@
 ﻿
 /**
  * 
- * Grupow WScrollPane 
- * Copybottom (c) 2009 ruranga@grupow.com
+ * WScrollPane by GrupoW
+ * Copyright (c) 2003-2010 GrupoW
  * 
  * this file is part of com.grupow.controls package
  * 
@@ -19,11 +19,6 @@ package com.grupow.controls
 
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
-	import flash.display.SimpleButton;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
-
-	import com.grupow.controls.WScrollTrackEvent;
 
 	/**
 	 * ...
@@ -33,11 +28,20 @@ package com.grupow.controls
 	{
 		public var easefunc:Function = Cubic.easeOut;
 		public var easeduration:Number = 0.4;
-		private var _content:DisplayObject;
+		
+		protected var _content:DisplayObject;
+		protected var _holder:MovieClip;
+		protected var _mask:MovieClip;
+		protected var _scrollTrack:WScrollTrack;
 
+		
 		public function WScrollPane() 
 		{
 			super();
+			
+			_holder = getChildByName("holder_mc") as MovieClip;
+			_mask = getChildByName("mask_mc") as MovieClip;
+			_scrollTrack = getChildByName("scrollTrack_mc") as WScrollTrack;
 		}
 
 		public function set content(target:DisplayObject):void 
@@ -47,10 +51,10 @@ package com.grupow.controls
 			_content.x = 0;
 			_content.y = 0;
 			
-			this.holder_mc.addChild(target);
+			this._holder.addChild(target);
 				
-			if (mask_mc.height - holder_mc.height > 0) {
-				scrollTrack_mc.visible = false;
+			if (_mask.height - _holder.height > 0) {
+				_scrollTrack.visible = false;
 			}
 		}
 
@@ -61,19 +65,19 @@ package com.grupow.controls
 
 		protected override function init():void 
 		{
-			scrollTrack_mc.min = 0;
-			scrollTrack_mc.max = 1;
-			scrollTrack_mc.addEventListener(WScrollTrackEvent.CHANGE, change_handler, false, 0, true);	
+			_scrollTrack.min = 0;
+			_scrollTrack.max = 1;
+			_scrollTrack.addEventListener(WScrollTrackEvent.CHANGE, change_handler, false, 0, true);	
 		}
 
 		protected override function destroy():void 
 		{
-			scrollTrack_mc.removeEventListener(WScrollTrackEvent.CHANGE, change_handler);
+			_scrollTrack.removeEventListener(WScrollTrackEvent.CHANGE, change_handler);
 		}
 
 		protected function change_handler(e:WScrollTrackEvent):void 
 		{
-			TweenLite.to(holder_mc, easeduration, { y: (mask_mc.height - holder_mc.height) * e.position, ease:easefunc });
+			TweenLite.to(_holder, easeduration, { y: (_mask.height - _holder.height) * e.position, ease:easefunc });
 			
 			//TODO bubbles event 
 			//dispatchEvent (e);
