@@ -13,13 +13,13 @@
 
 package com.grupow.controls 
 {
+	import com.grupow.controls.data.LineStyleVars;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	
+
 	/**
 	* ...
 	* @author Raúl Uranga
@@ -41,22 +41,25 @@ package com.grupow.controls
 		
 		private var _showBorder:Boolean = true;
 		
-		public var boundsRect:Rectangle;
-		
 		private var _rowCount:uint = 5;
 		private var _background:DisplayObject;
-	
+		
+		private var _lineSV:LineStyleVars;
+									
+		public var boundsRect:Rectangle;
+		
 		public function WList() 
 		{
 			super();
-		
+			
+			lineStyleVars = new LineStyleVars();
+			
 			_width = 120;
 			_height = 100;
-			
 		
 			_items = new Array();
 				
-			this.removeChildAt(0)
+			this.removeChildAt(0);
 		}
 		
 		protected override function init():void
@@ -122,7 +125,6 @@ package com.grupow.controls
 		private function inBounds():Boolean
 		{
 			if (boundsRect != null) {
-				//return this.boundsRect.containsPoint(new Point(this.mouseX, this.mouseY));
 				return this.mouseX > boundsRect.x && this.mouseX < this.boundsRect.width && this.mouseY > boundsRect.y && this.mouseY < boundsRect.height;
 			}
 			return (this.mouseX > 0 && this.mouseX < this.width && this.mouseY > 0 && this.mouseY < this.height);
@@ -170,11 +172,9 @@ package com.grupow.controls
 		
 		private function drawBorder(width:Number = 200, height:Number = 250):void
 		{
-			
 			border_mc.graphics.clear();
-			border_mc.graphics.lineStyle(1, _borderColor, 100);
+			border_mc.graphics.lineStyle(_lineSV.thickness, _lineSV.color, _lineSV.alpha, _lineSV.pixelHinting, _lineSV.scaleMode, _lineSV.caps, _lineSV.joints, _lineSV.miterLimit);
 			border_mc.graphics.drawRect(0, 0, width, height);
-			
 		}
 		
 		private function arrangeItems():void
@@ -196,7 +196,7 @@ package com.grupow.controls
 		
 		public function set borderColor(value:uint):void 
 		{
-			_borderColor = value;
+			_lineSV.color = _borderColor = value;
 			this.invalidate();
 		}
 		
@@ -265,6 +265,18 @@ package com.grupow.controls
 		{
 			return dy;
 		}
+		
+		public function get lineStyleVars():LineStyleVars
+		{
+			return _lineSV;
+		}
+		
+		public function set lineStyleVars(value:LineStyleVars):void
+		{
+			_lineSV = value;
+			if(_lineSV.color != 0) {
+				borderColor = _lineSV.color;
+			}
+		}
 	}
-	
 }
