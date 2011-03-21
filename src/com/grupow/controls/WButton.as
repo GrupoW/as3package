@@ -14,46 +14,63 @@
 package com.grupow.controls
 {
 	import flash.display.MovieClip;
-	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
+
 	/**
-	* ...
-	* @author Raúl Uranga
-	*/
-	
+	 * ...
+	 * @author Raúl Uranga
+	 */
+
 	public class WButton extends WAbstractControl
 	{
-		private var _label:String;
-		private var _enabled:Boolean;
-		
+		protected var _output:String;
+		protected var _enabled:Boolean;
+		protected var output_txt:TextField;
+
 		public function WButton()
 		{
 			super();
 			
-			_label = "label";
+			_output = "label";
 			_enabled = true;
 			
-			this.label_mc.output_txt.autoSize = TextFieldAutoSize.LEFT;
-			this.label_mc.output_txt.wordWrap = false;
+			setHitArea();
+			setOutputField();
 			
-			this.hit_mc.visible = false;
-			this.hit_mc.mouseEnabled = false;
-			
-			this.hitArea = this.hit_mc;
-			
-			this.width = hit_mc.width;
-			this.height = hit_mc.height;
+			this.width = this.hitArea.width;
+			this.height = this.hitArea.height;
 		}
-		
-		public function get label():String { return _label; }
-		
+
+		protected function setOutputField():void 
+		{
+			var label_mc:MovieClip = getChildByName("label_mc") as MovieClip;
+			output_txt = label_mc.getChildByName("output_txt") as TextField;
+			output_txt.autoSize = TextFieldAutoSize.LEFT;
+			output_txt.wordWrap = false;
+		}
+
+		protected function setHitArea():void 
+		{
+			var hit_mc:MovieClip = getChildByName("hit_mc") as MovieClip;
+			hit_mc.visible = false;
+			hit_mc.mouseEnabled = false;
+			
+			this.hitArea = hit_mc;
+		}
+
+		public function get label():String 
+		{ 
+			return _output; 
+		}
+
 		public function set label(value:String):void 
 		{
-			_label = value;
-			this.label_mc.output_txt.text = _label;
+			_output = value;
+			output_txt.text = _output;
 		}
-		
+
 		protected override function init():void
 		{	
 			this.buttonMode = true;
@@ -62,16 +79,19 @@ package com.grupow.controls
 			this.addEventListener(MouseEvent.ROLL_OVER, rollOver_handler, false, 0, true);
 			this.addEventListener(MouseEvent.ROLL_OUT, rollOut_handler, false, 0, true);
 		}
-		
+
 		protected override function destroy():void 
 		{
 			this.removeEventListener(MouseEvent.CLICK, click_handler, false);
 			this.removeEventListener(MouseEvent.ROLL_OVER, rollOver_handler, false);
 			this.removeEventListener(MouseEvent.ROLL_OUT, rollOut_handler, false);
 		}
-		
-		public function getEnabled():Boolean { return _enabled; }
-		
+
+		public function getEnabled():Boolean 
+		{ 
+			return _enabled; 
+		}
+
 		public function setEnabled(value:Boolean):void 
 		{
 			_enabled = value;
@@ -81,23 +101,20 @@ package com.grupow.controls
 				this.addEventListener(MouseEvent.CLICK, click_handler, false, 0, true);
 				this.addEventListener(MouseEvent.ROLL_OVER, rollOver_handler, false, 0, true);
 				this.addEventListener(MouseEvent.ROLL_OUT, rollOut_handler, false, 0, true);
-			
-			}else {
+			} else {
 				
 				this.removeEventListener(MouseEvent.CLICK, click_handler, false);
 				this.removeEventListener(MouseEvent.ROLL_OVER, rollOver_handler, false);
 				this.removeEventListener(MouseEvent.ROLL_OUT, rollOut_handler, false);
-				
 			}
 			
 			this.mouseEnabled = _enabled;
 		}
-			
+
 		protected function click_handler(e:MouseEvent):void
 		{
-			
 		}
-		
+
 		protected function rollOver_handler(e:MouseEvent):void
 		{
 			this.gotoAndPlay("over");
@@ -107,12 +124,11 @@ package com.grupow.controls
 		{
 			this.gotoAndPlay("out");
 		}
-		
+
 		override protected function draw():void 
 		{
-			this.hit_mc.width = this.width;
-			this.hit_mc.height = this.height;
+//			this.hitArea.width = this.width;
+//			this.hitArea.height = this.height;
 		}
 	}
-	
 }
