@@ -1,6 +1,6 @@
-﻿package com.grupow.debug
+﻿package com.grupow.logging
 {
-	import com.grupow.debug.errors.InvalidCategoryError;
+	import com.grupow.logging.errors.InvalidCategoryError;
 	
 	public class FlexLog 
 	{

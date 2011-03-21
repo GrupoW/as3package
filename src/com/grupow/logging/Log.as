@@ -9,16 +9,16 @@
  * 
  **/
 
-package com.grupow.debug 
+package com.grupow.logging 
 {
-	import com.grupow.debug.targets.LineFormattedTarget;
+	import com.grupow.logging.targets.LineFormattedTarget;
 	
 	/**
 	* @usage 
 	*
-	*	import com.grupow.debug.targets.WSOSTarget;
-	*	import com.grupow.debug.targets.WTraceTarget;	
-	*	import com.grupow.debug.Log;
+	*	import com.grupow.logging.targets.WSOSTarget;
+	*	import com.grupow.logging.targets.WTraceTarget;	
+	*	import com.grupow.logging.Log;
 	* 
 	*	Log.verbose = true;
 	*	Log.registerTarget(new WTraceTarget());

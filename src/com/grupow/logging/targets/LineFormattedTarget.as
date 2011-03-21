@@ -1,8 +1,8 @@
-﻿package com.grupow.debug.targets
+﻿package com.grupow.logging.targets
 {
-	import com.grupow.debug.AbstractTarget;
-	import com.grupow.debug.ILogger;
-	import com.grupow.debug.LogEvent;
+	import com.grupow.logging.LogEvent;
+	import com.grupow.logging.ILogger;
+	import com.grupow.logging.AbstractTarget;
 	
 	public class LineFormattedTarget extends AbstractTarget
 	{

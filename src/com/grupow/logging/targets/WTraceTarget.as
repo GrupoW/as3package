@@ -1,4 +1,4 @@
-﻿package com.grupow.debug.targets
+﻿package com.grupow.logging.targets
 {
 	
 	public class WTraceTarget extends LineFormattedTarget
