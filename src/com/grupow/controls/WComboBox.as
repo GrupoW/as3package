@@ -13,13 +13,12 @@
 
 package com.grupow.controls 
 {
-	import com.greensock.easing.Cubic;
 	import com.greensock.TweenLite;
+	import com.greensock.easing.Cubic;
 
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import flash.geom.Rectangle;
 
@@ -40,9 +39,9 @@ package com.grupow.controls
 			
 			_list = new WList();
 			
-			cb_btn = WButton(this.getChildAt(0));
+			cb_btn = this.getChildAt(0) as WButton;
 			
-			this.width = WButton(cb_btn).width;
+			this.width = cb_btn.width;
 			this.height = cb_btn.height;
 						
 			_list.x = this.width + 20;
@@ -54,10 +53,8 @@ package com.grupow.controls
 			
 			listContainer = new Sprite();
 			
-			listContainer.y = WButton(cb_btn).height;
+			listContainer.y = cb_btn.height;
 			listContainer.addChild(_list);
-			
-			trace("listContainer " + listContainer.y)
 			
 			addChildAt(listContainer, 0);
 		}
@@ -98,11 +95,6 @@ package com.grupow.controls
 
 		private function checkBounds_handler(e:Event):void 
 		{
-			//if (boundsRect != null) {
-			//return this.boundsRect.containsPoint(new Point(this.mouseX, this.mouseY));
-			//	return this.mouseX > boundsRect.x && this.mouseX < this.boundsRect.width && this.mouseY > boundsRect.y && this.mouseY < boundsRect.height;
-			//}
-			//*/
 			var offset:uint = 50;
 			
 			var inBounds:Boolean = (this.mouseX > -offset && this.mouseX < this.width + offset && this.mouseY > -offset && this.mouseY < this.height + _list.height + offset);
@@ -111,7 +103,6 @@ package com.grupow.controls
 				this.removeEventListener(MouseEvent.MOUSE_MOVE, checkBounds_handler);
 				this.close();
 			}
-			//*/
 		}
 
 		public function open():void
@@ -151,7 +142,6 @@ package com.grupow.controls
 		override protected function draw():void 
 		{
 			listContainer.scrollRect = new Rectangle(0, 0, _width, _list.height);
-			//this.scrollRect = new Rectangle(0, 0, _width, cb_btn.height + _list.height);
 			super.draw();
 		}
 
