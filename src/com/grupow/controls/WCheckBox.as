@@ -64,9 +64,12 @@ package com.grupow.controls
 
 		public function set selected(value:Boolean):void
 		{
-			if(value) {
+			if(value && !_isSelected) {
 				_isSelected = true;
 				this.gotoAndPlay("active");
+			} else if(!value && _isSelected) {
+				_isSelected = false;
+				this.gotoAndPlay("deactive");
 			}
 		}
 	}	
