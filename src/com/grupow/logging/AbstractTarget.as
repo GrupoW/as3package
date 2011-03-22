@@ -1,6 +1,6 @@
-﻿package com.grupow.debug
+﻿package com.grupow.logging
 {
-	import com.grupow.debug.errors.InvalidFilterError;
+	import mx.logging.errors.InvalidFilterError;
 	
 	public class AbstractTarget implements ILoggingTarget
 	{

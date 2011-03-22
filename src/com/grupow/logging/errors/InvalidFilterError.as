@@ -1,4 +1,4 @@
-﻿package com.grupow.debug.errors
+﻿package com.grupow.logging.errors
 {
 	
 	public class InvalidFilterError extends Error

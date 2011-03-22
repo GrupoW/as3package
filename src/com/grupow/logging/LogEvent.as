@@ -1,4 +1,4 @@
-﻿package com.grupow.debug
+﻿package com.grupow.logging
 {
 	import flash.events.Event;
 
