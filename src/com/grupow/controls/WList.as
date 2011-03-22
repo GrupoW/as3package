@@ -37,7 +37,7 @@ package com.grupow.controls
 		private var _borderColor:uint = 0x000000;
 		
 		private var scrollEnabled:Boolean = true;
-		private var _selectedItem:WButton;
+		private var _selectedItem:WLabelButton;
 		
 		private var _showBorder:Boolean = true;
 		
@@ -59,7 +59,9 @@ package com.grupow.controls
 		
 			_items = new Array();
 				
-			this.removeChildAt(0);
+			while(this.numChildren) {
+				this.removeChildAt(0);
+			}
 		}
 		
 		protected override function init():void
@@ -70,8 +72,8 @@ package com.grupow.controls
 		
 		private function onClick(e:MouseEvent):void 
 		{
-			if (e.target is WButton) {
-				_selectedItem = WButton(e.target);
+			if (e.target is WLabelButton) {
+				_selectedItem = WLabelButton(e.target);
 				this.dispatchEvent(new Event(Event.CHANGE));
 			}
 		}
@@ -180,8 +182,8 @@ package com.grupow.controls
 		private function arrangeItems():void
 		{
 			var i:int = 0;
-			var prevItem:WButton;
-			for each(var item:WButton in _items) {
+			var prevItem:WLabelButton;
+			for each(var item:WLabelButton in _items) {
 				item.x = 0;
 				item.y = i * (prevItem != null ? prevItem.height : 0);
 				//item.width = this._width;
@@ -190,7 +192,7 @@ package com.grupow.controls
 			}
 		}
 			
-		public function get selectedItem():WButton { return _selectedItem; }
+		public function get selectedItem():WLabelButton { return _selectedItem; }
 		
 		public function get borderColor():uint { return _borderColor; }
 		
@@ -229,16 +231,16 @@ package com.grupow.controls
 			dispatchEvent(new Event(Event.RESIZE));
 		}
 	
-		public function addItem(item:WButton):void 
+		public function addItem(item:WLabelButton):void 
 		{
 			this.itemsContainer.addChild(item);
 			_items.push(item);
 			invalidate();
 		}
 		
-		public function getItemAt(index:uint):WButton
+		public function getItemAt(index:uint):WLabelButton
 		{
-			return WButton(_items[index]);
+			return WLabelButton(_items[index]);
 		}
 		
 		public function removeItemAt(index:uint):void

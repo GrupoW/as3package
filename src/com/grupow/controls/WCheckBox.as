@@ -19,7 +19,7 @@ package com.grupow.controls
 	 * ...
 	 * @author Raúl Uranga
 	 */
-	public class WCheckBox extends WButton
+	public class WCheckBox extends WLabelButton
 	{
 		private var _isSelected:Boolean;
 

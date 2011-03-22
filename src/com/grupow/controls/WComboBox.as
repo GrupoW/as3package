@@ -30,7 +30,7 @@ package com.grupow.controls
 	{
 		private var _list:WList;
 		private var _isOpen:Boolean;
-		private var cb_btn:WButton;
+		private var cb_btn:WLabelButton;
 		private var listContainer:Sprite;
 
 		public function WComboBox() 
@@ -39,7 +39,7 @@ package com.grupow.controls
 			
 			_list = new WList();
 			
-			cb_btn = this.getChildAt(0) as WButton;
+			cb_btn = this.getChildAt(0) as WLabelButton;
 			
 			this.width = cb_btn.width;
 			this.height = cb_btn.height;
@@ -175,12 +175,12 @@ package com.grupow.controls
 			return _list.length;
 		}
 
-		public function get selectedItem():WButton
+		public function get selectedItem():WLabelButton
 		{
 			return _list.selectedItem;
 		}
 
-		public function addItem(value:WButton):void
+		public function addItem(value:WLabelButton):void
 		{
 			_list.addItem(value);
 		}

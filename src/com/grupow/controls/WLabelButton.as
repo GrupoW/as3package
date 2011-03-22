@@ -23,13 +23,13 @@ package com.grupow.controls
 	 * @author Raúl Uranga
 	 */
 
-	public class WButton extends WAbstractControl
+	public class WLabelButton extends WAbstractControl
 	{
 		protected var _output:String;
 		protected var _enabled:Boolean;
 		protected var output_txt:TextField;
 
-		public function WButton()
+		public function WLabelButton()
 		{
 			super();
 			
