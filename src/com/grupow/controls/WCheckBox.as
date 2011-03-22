@@ -13,28 +13,61 @@
 
 package com.grupow.controls 
 {
-	
+	import flash.events.MouseEvent;
+
 	/**
-	* ...
-	* @author Raúl Uranga
-	*/
-	public class WCheckBox extends WAbstractControl
+	 * ...
+	 * @author Raúl Uranga
+	 */
+	public class WCheckBox extends WButton
 	{
-		
+		private var _isSelected:Boolean;
+
 		public function WCheckBox() 
 		{
 			super();
+			_isSelected = false;
 		}
-		
-		protected override function init():void
-		{	
-			
-		}
-		
-		protected override function destroy():void 
+
+		override protected function click_handler(e:MouseEvent):void 
 		{
-			
+			toggleActive();
+			super.click_handler(e);
 		}
-	}
-	
+		
+		override protected function rollOver_handler(e:MouseEvent):void
+		{
+			if(!_isSelected)
+				this.gotoAndPlay("over");
+		}
+
+		override protected function rollOut_handler(e:MouseEvent):void
+		{
+			if(!_isSelected)
+				this.gotoAndPlay("out");
+		}
+
+		private function toggleActive():void 
+		{
+			_isSelected = !_isSelected;
+			if(_isSelected) {
+				this.gotoAndPlay("active");
+			} else {
+				this.gotoAndPlay("deactive");
+			}
+		}
+
+		public function get selected():Boolean
+		{
+			return _isSelected;
+		}
+
+		public function set selected(value:Boolean):void
+		{
+			if(value) {
+				_isSelected = true;
+				this.gotoAndPlay("active");
+			}
+		}
+	}	
 }

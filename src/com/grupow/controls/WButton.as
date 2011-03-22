@@ -1,7 +1,7 @@
 ﻿
 /**
  * 
- * WSimpleButton by GrupoW 
+ * WButton by GrupoW 
  * Copyright (c) 2003-2010 GrupoW
  * 
  * this file is part of com.grupow.controls package
@@ -41,11 +41,12 @@ package com.grupow.controls
 			
 			this.width = this.hitArea.width;
 			this.height = this.hitArea.height;
+			
 		}
 
 		protected function setOutputField():void 
 		{
-			var label_mc:MovieClip = getChildByName("label_mc") as MovieClip;
+			var label_mc:MovieClip = getChildAt(this.numChildren - 1) as MovieClip;
 			output_txt = label_mc.getChildByName("output_txt") as TextField;
 			output_txt.autoSize = TextFieldAutoSize.LEFT;
 			output_txt.wordWrap = false;
@@ -53,7 +54,7 @@ package com.grupow.controls
 
 		protected function setHitArea():void 
 		{
-			var hit_mc:MovieClip = getChildByName("hit_mc") as MovieClip;
+			var hit_mc:MovieClip = getChildAt(this.numChildren - 2) as MovieClip;
 			hit_mc.visible = false;
 			hit_mc.mouseEnabled = false;
 			
