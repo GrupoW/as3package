@@ -7,7 +7,7 @@ package
 
 	public class TrackingFactoryTest extends TestCase 
 	{
-		var tracker:ITrackable;
+		private var tracker:ITrackable;
 		public function TrackingFactoryTest(testMethod:String = null) 
 		{
 			super(testMethod);
