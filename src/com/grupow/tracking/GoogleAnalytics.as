@@ -31,8 +31,13 @@ package com.grupow.tracking {
 				//Old Google Analytics Code
 				//ExternalInterface.call("urchinTracker",action);
 				
-				//New Google Analytics Code
-				ExternalInterface.call("pageTracker._trackPageview",rest[0]);
+				/*/
+					//Old Google Analytics Code
+					ExternalInterface.call("pageTracker._trackPageview",rest[0]);
+				/*/	
+					//New Google Analytics Code
+					ExternalInterface.call("_gaq.push(['_trackPageview'," + rest[0] + "])");
+				//*/
 				
 				trace("Google Analytics Tracking: " + rest[0]);
 				
