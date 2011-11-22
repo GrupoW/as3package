@@ -36,7 +36,7 @@ package com.grupow.tracking {
 					ExternalInterface.call("pageTracker._trackPageview",rest[0]);
 				/*/	
 					//New Google Analytics Code
-					ExternalInterface.call("_gaq.push(['_trackPageview'," + rest[0] + "])");
+					ExternalInterface.call("_gaq.push",['_trackPageview', rest[0]]);
 				//*/
 				
 				trace("Google Analytics Tracking: " + rest[0]);
